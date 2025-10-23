@@ -23,7 +23,7 @@ i18n
     // 默认的命名空间
     defaultNS: "common",
     // 支持的语言列表
-    supportedLngs: ["en", "zh", "fr", "ja", "hi", "de", "ko", "zh-TW", "it", "pt", "tr", "ru"],
+    supportedLngs: ["en", "zh", "fr", "ja", "hi", "de", "ko", "zh-TW", "it", "pt", "pt-BR", "tr", "ru"],
     // 后端插件的配置
     backend: {
       // 翻译文件的加载路径, e.g., /locales/en/common.json
@@ -34,7 +34,7 @@ i18n
       // 检测语言的顺序
       order: ["cookie", "localStorage", "htmlTag", "path", "subdomain"],
       // 缓存检测到的语言到这些位置
-      caches: ["cookie", "localStorage"],
+      caches: [],
     },
   });
 
