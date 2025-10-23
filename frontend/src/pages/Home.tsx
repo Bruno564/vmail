@@ -37,6 +37,7 @@ import { InfoModal } from "../components/InfoModal.tsx";
 import { MailDetail } from "./MailDetail.tsx";
 // feat: 导入倒计时组件
 import { CountdownTimer } from "../components/CountdownTimer.tsx";
+import { useSenderModal } from "../components/sender.tsx";
 
 export function Home() {
   const config = useConfig();
@@ -65,6 +66,7 @@ export function Home() {
 
   // feat: 初始化密码模态框
   const { PasswordModal, setShowPasswordModal } = usePasswordModal();
+  const { SenderModal, setShowSenderModal } = useSenderModal(address || "");
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   // feat: 新增状态，用于跟踪当前邮箱地址是否曾经收到过邮件
@@ -308,6 +310,7 @@ export function Home() {
   return (
     <div className="h-full flex flex-col gap-4 md:flex-row justify-center items-start mt-24 mx-6 md:mx-10">
       <PasswordModal onLogin={handleLogin} isLoggingIn={isLoggingIn} />
+      <SenderModal />
       {selectedEmail && (
         <InfoModal
           showModal={showEmailModal}
@@ -362,8 +365,13 @@ export function Home() {
               />
             )}
             <button
-              onClick={handleStopAddress}
+              onClick={() => setShowSenderModal(true)}
               className="py-2.5 rounded-md w-full bg-cyan-600 hover:opacity-90 disabled:cursor-not-allowed disabled:bg-zinc-500">
+              {t("Send Email")}
+            </button>
+            <button
+              onClick={handleStopAddress}
+              className="py-2.5 rounded-md w-full bg-red-600 hover:opacity-90 disabled:cursor-not-allowed disabled:bg-zinc-500 mt-2">
               {t("Stop")}
             </button>
           </div>
