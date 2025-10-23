@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { formatDistanceToNow } from "date-fns";
-import { zhCN } from "date-fns/locale";
+import { ptBR } from "date-fns/locale";
 import clsx from "clsx";
 // refactor: 将导入从 'database' 包更改为本地的类型定义文件
 import type { Email } from "../database_types";
@@ -82,7 +82,7 @@ export function MailList({
       return (
         <div className="w-full items-center h-full flex-col justify-center flex">
           <WaitingEmail />
-          <p className="text-zinc-400 mt-6">请先创建一个临时邮箱地址</p>
+          <p className="text-zinc-400 mt-6">{t("Please create a temporary email address first")}</p>
         </div>
       );
     }
@@ -132,7 +132,7 @@ export function MailList({
               <div className={"ml-auto text-xs"}>
                 {formatDistanceToNow(new Date(email.date || email.createdAt), {
                   addSuffix: true,
-                  locale: zhCN,
+                  locale: ptBR,
                 })}
               </div>
             </div>
@@ -164,7 +164,7 @@ export function MailList({
               onClick={onCloseDetail}
               className="flex items-center gap-1 text-sm font-semibold text-cyan-400 hover:text-cyan-300 ml-2">
               <ArrowUturnLeft />
-              返回邮件列表
+              {t("Return to email list")}
             </button>
           )}
         </div>
